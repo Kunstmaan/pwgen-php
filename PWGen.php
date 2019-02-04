@@ -335,7 +335,7 @@
 				return false;
 			}
 			if (function_exists('mcrypt_create_iv')) {
-				$rnd = unpack('L',mcrypt_create_iv(4,MCRYPT_DEV_URANDOM));
+				$rnd = unpack('L', @mcrypt_create_iv(4,MCRYPT_DEV_URANDOM));
 				// Because you can't unpack an unsigned long on a 32bit system (or rather, you can,
 				// but it won't be unsigned), we need to clear the sign bit. mt_getrandmax() seems to
 				// be 2147483647 (0x7FFFFFFF) on all platforms I've tested, so this doesn't change the
